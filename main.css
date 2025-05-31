@@ -1,26 +1,36 @@
 @font-face {
     font-family: Jeju;
-    src: url("./fonts/JejuMyeongjo.ttf");
+    src: url("/fonts/JejuMyeongjo.ttf");
+}
+
+body{
+    overflow: hidden;
+}
+
+:root{
+    --white: #efefef;
+    --gradient1: #ffd7f4;
+    --gradiebt2: #fffbf1;
+    --gradient3: #eceaff;
+    --gradent4: #ecdeff;
+    --gradent5: #fdfff3;
 }
 
 .main{
     box-sizing: border-box;
     height: 100vh;
     width: 100%;
-    background-image: url("./images/bg.jpg");
+    background-image: url("/images/bg.jpg");
     background-size: cover;
+    background-position: center top;
     display: flex;
     flex-direction: column;
     padding: 32px;
     justify-content: space-between;
 }
 
-.logo{
+.sign{
     max-width: 120px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
 }
 
 
@@ -28,6 +38,7 @@
     display: flex;
     flex-direction: column;
     gap: 32px;
+    z-index: 2;
 }
 
 .menu__list{
@@ -39,7 +50,7 @@
 
 a{
     text-decoration: none;
-    color: #efefef;
+    color: var(--white);
     font-size: 32px;
     font-family: Jeju;
     transition: 0.1s;
@@ -58,3 +69,18 @@ li:hover{
 a:hover{
     font-weight: bolder;
 }
+
+.gradient{
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    background: 
+    radial-gradient(circle at 10% 20%, var(--gradient1), transparent 30%),
+    radial-gradient(circle at 90% 80%, var(--gradiebt2), transparent 30%),
+    radial-gradient(circle at 50% 50%, var(--gradient3), var(--gradent4), transparent 30%);
+    mix-blend-mode: overlay;
+    transition: opacity 5s, background-position 10s, background-size 10s;
+}
+
