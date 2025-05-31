@@ -88,7 +88,7 @@ a:hover {
         radial-gradient(circle at 10% 20%, var(--gradient1), transparent 30%),
         radial-gradient(circle at 90% 80%, var(--gradiebt2), transparent 30%),
         radial-gradient(circle at 50% 50%, var(--gradient3), var(--gradent4), transparent 30%);
-    transition: opacity 5s, background-position 10s, background-size 10s;
+    transition: opacity 4s, background-position 5s, background-size 5s;
 }
 
 .gradient--tracking {
@@ -98,7 +98,7 @@ a:hover {
         radial-gradient(circle at 20% 10%, var(--gradient1), transparent 30%),
         radial-gradient(circle at 80% 90%, var(--gradiebt2), transparent 30%),
         radial-gradient(circle at 50% 50%, var(--gradient3), var(--gradent4), transparent 30%);
-    transition: opacity 5s, background-position 10s, background-size 10s;
+    transition: opacity 5s, background-position 5s, background-size 5s;
     background-repeat: no-repeat;
 }
 

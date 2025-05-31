@@ -11,13 +11,13 @@ function gradientMovement() {
     gradientStatic.style.backgroundPosition = `${100 * Math.random()}% ${100 * Math.random()}%`;
     gradientStatic.style.backgroundSize = `${200 + 100 * Math.random()}% ${200 + 100 * Math.random()}%`;
     gradientTracking.style.backgroundSize = `${200 + 100 * Math.random()}% ${200 + 100 * Math.random()}%`;
-    setInterval(gradientMovement, 5000);
+    setTimeout(gradientMovement, 5000);
 }
 
 function gradientOpacity() {
     const randomOpacity = Math.random();
     gradientStatic.style.opacity = `${randomOpacity}`;
-    setInterval(gradientOpacity, 5000);
+    setTimeout(gradientOpacity, 5000);
 }
 
 function lerp(start, end, factor) {
