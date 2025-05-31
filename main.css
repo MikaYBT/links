@@ -3,11 +3,11 @@
     src: url("/fonts/JejuMyeongjo.ttf");
 }
 
-body{
+body {
     overflow: hidden;
 }
 
-:root{
+:root {
     --white: #efefef;
     --gradient1: #ffd7f4;
     --gradiebt2: #fffbf1;
@@ -16,71 +16,129 @@ body{
     --gradent5: #fdfff3;
 }
 
-.main{
+.main {
     box-sizing: border-box;
     height: 100vh;
-    width: 100%;
-    background-image: url("/images/bg.jpg");
-    background-size: cover;
-    background-position: center top;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     padding: 32px;
     justify-content: space-between;
+
+
 }
 
-.sign{
+.sign {
     max-width: 120px;
+    z-index: 6;
 }
 
 
-.menu{
+.menu {
     display: flex;
     flex-direction: column;
     gap: 32px;
-    z-index: 2;
+    z-index: 6;
+    width: fit-content;
 }
 
-.menu__list{
+.menu__list {
     display: flex;
     flex-direction: column;
     list-style: none;
     gap: 8px;
 }
 
-a{
+a {
     text-decoration: none;
     color: var(--white);
     font-size: 32px;
     font-family: Jeju;
     transition: 0.1s;
-    
+
 }
 
-li{
+li {
     max-width: fit-content;
     transition: 0.3s;
 }
 
-li:hover{
+li:hover {
     transform: scaleY(1.5);
 }
 
-a:hover{
+a:hover {
     font-weight: bolder;
 }
 
-.gradient{
+.gradient {
     position: absolute;
-    top: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    mix-blend-mode: overlay;
+    background-size: cover;
+}
+
+.gradient--static {
     width: 100vw;
     height: 100vh;
-    z-index: 1;
-    background: 
-    radial-gradient(circle at 10% 20%, var(--gradient1), transparent 30%),
-    radial-gradient(circle at 90% 80%, var(--gradiebt2), transparent 30%),
-    radial-gradient(circle at 50% 50%, var(--gradient3), var(--gradent4), transparent 30%);
-    mix-blend-mode: overlay;
+    background:
+        radial-gradient(circle at 10% 20%, var(--gradient1), transparent 30%),
+        radial-gradient(circle at 90% 80%, var(--gradiebt2), transparent 30%),
+        radial-gradient(circle at 50% 50%, var(--gradient3), var(--gradent4), transparent 30%);
     transition: opacity 5s, background-position 10s, background-size 10s;
+}
+
+.gradient--tracking {
+    width: 200vw;
+    height: 200vh;
+    background:
+        radial-gradient(circle at 20% 10%, var(--gradient1), transparent 30%),
+        radial-gradient(circle at 80% 90%, var(--gradiebt2), transparent 30%),
+        radial-gradient(circle at 50% 50%, var(--gradient3), var(--gradent4), transparent 30%);
+    transition: opacity 5s, background-position 10s, background-size 10s;
+    background-repeat: no-repeat;
+}
+
+.gradient--cursor{
+    
+    width: 300px;
+    height: 300px;
+    transform-origin: center;
+    background:
+        radial-gradient(circle at 50% 50%, var(--gradient3), var(--gradent4), transparent 20%);
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: background-size 0.3s ease-in-out;
+    background-size: 100% 100%;
+}
+
+.character {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100vh;
+    background: url("/images/character.png");
+    background-position: center top;
+    z-index: 2;
+    background-repeat: no-repeat;
+}
+
+.background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120vw;
+    height: 120vh;
+    background-size: cover;
+    background-image: url("/images/bg.jpg");
+    background-repeat: no-repeat;
+    background-position: center top;
+
 }
 
