@@ -29,13 +29,13 @@ function gradientMovement() {
     gradientLayer1.style.backgroundSize = `${200 + 100 * Math.random()}% ${200 + 100 * Math.random()}%`;
     gradientLayer2.style.backgroundPosition = `${100 * Math.random()}% ${100 * Math.random()}%`;
     gradientLayer2.style.backgroundSize = `${200 + 100 * Math.random()}% ${200 + 100 * Math.random()}%`;
-    setTimeout(gradientMovement, 5000);
+    setTimeout(gradientMovement, 10000);
 }
 
 function gradientOpacity() {
     gradientLayer1.style.opacity = `${Math.random}`;
     gradientLayer2.style.opacity = `${Math.random}`;
-    setTimeout(gradientOpacity, 5000);
+    setTimeout(gradientOpacity, 10000);
 }
 
 gradientOpacity();
@@ -73,7 +73,7 @@ function startGyro() {
 function GyroParallax(event) {
     const beta = event.beta;
     const gamma = event.gamma;
-    const maxTilt = 50;
+    const maxTilt = 100;
     const smoothedBeta = lastBeta + (beta - lastBeta) * 0.2;
     const smoothedGamma = lastGamma + (gamma - lastGamma) * 0.2;
     lastBeta = smoothedBeta;
