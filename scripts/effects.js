@@ -159,5 +159,3 @@ window.addEventListener('resize', () => {
     mouseX = window.innerWidth / 2;
     mouseY = window.innerHeight / 2;
 });
-
-
