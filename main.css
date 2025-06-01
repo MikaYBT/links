@@ -26,6 +26,7 @@ html, body {
     display: flex;
     flex-direction: column;
     padding: 32px;
+    padding-bottom: calc(32px + env(safe-area-inset-bottom));
     justify-content: space-between;
 }
 
