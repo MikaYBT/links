@@ -73,16 +73,17 @@ function startGyro() {
 function GyroParallax(event) {
     const beta = event.beta;
     const gamma = event.gamma;
-    const alpha = event.alpha;
-    layer.forEach(layer => {
-        const smoothedBeta = lastBeta + (beta - lastBeta) * layer.factor;
-        const smoothedGamma = lastGamma + (gamma - lastGamma) * layer.factor;
-        const maxTilt = 50;
-        lastBeta = smoothedBeta;
-        lastGamma = smoothedGamma;
-        const offsetX = Math.max(Math.min(smoothedBeta, maxTilt), -maxTilt) * 15;
-        const offsetY = Math.max(Math.min(smoothedGamma, maxTilt), -maxTilt) * 15;
-        let adaptiveMoving = (1920 - window.innerWidth) / 10;
+    const maxTilt = 50;
+    const smoothedBeta = lastBeta + (beta - lastBeta) * 0.2;
+    const smoothedGamma = lastGamma + (gamma - lastGamma) * 0.2;
+    lastBeta = smoothedBeta;
+    lastGamma = smoothedGamma;
+    const limitedBeta = Math.max(Math.min(smoothedBeta, maxTilt), -maxTilt);
+    const limitedGamma = Math.max(Math.min(smoothedGamma, maxTilt), -maxTilt);
+    let adaptiveMoving = (1920 - window.innerWidth) / 10;
+    layers.forEach(layer => {
+        const offsetX = limitedGamma * 10 * layer.factor;
+        const offsetY = limitedBeta * 10 * layer.factor;
         layer.element.style.backgroundPosition = `calc(50% + ${offsetX}px - ${adaptiveMoving}px) calc(50% + ${offsetY}px)`;
     });
 };
