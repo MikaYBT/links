@@ -6,6 +6,8 @@ const Cursor = document.querySelector(".cursor");
 layers = [{ element: backgroundImage, factor: 0.05, x: 0, y: 0 },
 { element: backgroundCharacter, factor: 0.1, x: 0, y: 0 }];
 
+//gradient animation
+
 function gradientMovement() {
     gradientLayer1.style.backgroundPosition = `${100 * Math.random()}% ${100 * Math.random()}%`;
     gradientLayer1.style.backgroundSize = `${200 + 100 * Math.random()}% ${200 + 100 * Math.random()}%`;
@@ -20,12 +22,66 @@ function gradientOpacity() {
     setTimeout(gradientOpacity, 5000);
 }
 
+gradientOpacity();
+gradientMovement();
+
+//gyroscope
+
+let isGyroActive = false;
+let lastBeta = 0;
+let lastGamma = 0;
+
+function initGyroParallax() {
+    if (typeof DeviceOrientationEvent !== 'undefined' && 
+        typeof DeviceOrientationEvent.requestPermission === 'function') {
+        showPermissionPanel();
+    } else if ('DeviceOrientationEvent' in window) {
+        startGyro();
+    }
+}
+
+function requestGyroPermission() {
+    DeviceOrientationEvent.requestPermission().then(permissionState => {
+            if (permissionState === 'granted') {
+                startGyro();
+                hidePermissionPanel();
+            }
+        })
+}
+
+function startGyro() {
+    window.addEventListener('deviceorientation', handleOrientation);
+    isGyroActive = true;
+}
+
+function handleOrientation(event) {
+    const beta = event.beta;  
+    const gamma = event.gamma;
+    const alpha = event.alpha;
+    const smoothedBeta = lastBeta + (beta - lastBeta) * 0.2;
+    const smoothedGamma = lastGamma + (gamma - lastGamma) * 0.2;
+    lastBeta = smoothedBeta;
+    lastGamma = smoothedGamma;
+    GyroParallax(smoothedBeta, smoothedGamma);
+}
+
+function GyroParallax(beta, gamma) {
+    const maxTilt = 30;
+    const limitedBeta = Math.max(Math.min(beta, maxTilt), -maxTilt);
+    const limitedGamma = Math.max(Math.min(gamma, maxTilt), -maxTilt);
+    const offsetX = limitedGamma * 1.5;
+    const offsetY = limitedBeta * 1.5;
+    layers.forEach(layer => {
+        layer.element.style.backgroundPosition = `calc(50% + ${offsetX}px - ${adaptiveMoving}px) calc(50% + ${offsetY}px)`;
+    });
+}
+
+//background parallax
+
 function lerp(start, end, factor) {
     return start * (1 - factor) + end * factor;
 }
 
-gradientOpacity();
-gradientMovement();
 let moveTimeout;
 const lerpFactor = 0.5;
 let mouseX = window.innerWidth / 2;
@@ -51,6 +107,8 @@ document.addEventListener('mousemove', (e) => {
 
 });
 
+//cursor
+
 document.addEventListener("mouseenter", () => {
     Cursor.style.opacity = "0.4";
 })
@@ -73,3 +131,5 @@ window.addEventListener('resize', () => {
     mouseX = window.innerWidth / 2;
     mouseY = window.innerHeight / 2;
 });
+
+
