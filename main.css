@@ -14,7 +14,7 @@ html, body {
 }
 
 .wrapper{
-    height: 100vh;
+    min-height: 100vh;
     width: 100vw;
     clip-path: border-box;
 }
@@ -190,4 +190,11 @@ a:hover {
         width: 100px;
         height: 100px;
     }
+}
+
+@media (max-width: 768px) {
+  .main {
+    min-height: 100dvh;
+    padding-bottom: calc(32px + env(safe-area-inset-bottom));
+  }
 }
