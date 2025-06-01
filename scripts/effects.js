@@ -71,6 +71,7 @@ function GyroParallax(beta, gamma) {
     const limitedGamma = Math.max(Math.min(gamma, maxTilt), -maxTilt);
     const offsetX = limitedGamma * 1.5;
     const offsetY = limitedBeta * 1.5;
+    let adaptiveMoving = (1920 - window.innerWidth) / 10;
     layers.forEach(layer => {
         layer.element.style.backgroundPosition = `calc(50% + ${offsetX}px - ${adaptiveMoving}px) calc(50% + ${offsetY}px)`;
     });
@@ -116,6 +117,9 @@ document.addEventListener("mouseenter", () => {
 })
 document.addEventListener("mouseleave", () => {
     Cursor.style.opacity = "0";
+})
+document.addEventListener("mousemove", () => {
+    Cursor.style.opacity = "0.4";
 })
 
 document.querySelectorAll("li").forEach(button => button.addEventListener("mouseenter", () => {
