@@ -3,8 +3,30 @@
     src: url("fonts/JejuMyeongjo.ttf");
 }
 
-body {
+html, body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
     overflow: hidden;
+    overscroll-behavior: none;
+    touch-action: none;
+}
+
+.wrapper{
+    height: 100vh;
+    width: 100vw;
+    clip-path: border-box;
+}
+
+.main {
+    box-sizing: border-box;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    padding: 32px;
+    justify-content: space-between;
 }
 
 :root {
@@ -16,17 +38,6 @@ body {
     --gradent5: #fdfff3;
 }
 
-.main {
-    box-sizing: border-box;
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    padding: 32px;
-    justify-content: space-between;
-
-
-}
 
 .sign {
     max-width: 120px;
@@ -55,7 +66,7 @@ a {
     font-size: 32px;
     font-family: Jeju;
     transition: 0.1s;
-
+    -webkit-tap-highlight-color: transparent;
 }
 
 li {
