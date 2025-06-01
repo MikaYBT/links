@@ -76,6 +76,8 @@ function GyroParallax(beta, gamma) {
     });
 }
 
+window.addEventListener('DOMContentLoaded', initGyroParallax);
+
 //background parallax
 
 function lerp(start, end, factor) {
