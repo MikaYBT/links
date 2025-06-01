@@ -30,7 +30,7 @@ body {
 
 .sign {
     max-width: 120px;
-    z-index: 6;
+    z-index: 8;
 }
 
 
@@ -38,7 +38,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 32px;
-    z-index: 6;
+    z-index: 8;
     width: fit-content;
 }
 
@@ -81,7 +81,7 @@ a:hover {
     background-size: cover;
 }
 
-.gradient--static {
+.gradient--1 {
     width: 100vw;
     height: 100vh;
     background:
@@ -91,7 +91,7 @@ a:hover {
     transition: opacity 4s, background-position 5s, background-size 5s;
 }
 
-.gradient--tracking {
+.gradient--2 {
     width: 200vw;
     height: 200vh;
     background:
@@ -102,17 +102,19 @@ a:hover {
     background-repeat: no-repeat;
 }
 
-.gradient--cursor{
-    
+.cursor{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 0;
+    left: 0;
+    transform-origin: center;
     width: 300px;
     height: 300px;
     transform-origin: center;
-    background:
-        radial-gradient(circle at 50% 50%, var(--gradient3), var(--gradent4), transparent 20%);
-    background-repeat: no-repeat;
-    background-position: center;
-    transition: background-size 0.3s ease-in-out;
-    background-size: 100% 100%;
+    z-index: 7;
+    transition: width 0.3s, height 0.3s, opacity 0.3s;
+    mix-blend-mode: hard-light;
+    opacity: 0;
 }
 
 .character {
@@ -123,7 +125,7 @@ a:hover {
     width: 100vw;
     height: 100vh;
     background: url("images/character.png");
-    background-position: center top;
+    background-position: calc(50% - (1920px - 100vw)/10) 50%;
     z-index: 2;
     background-repeat: no-repeat;
 }
