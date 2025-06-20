@@ -159,3 +159,15 @@ window.addEventListener('resize', () => {
     mouseX = window.innerWidth / 2;
     mouseY = window.innerHeight / 2;
 });
+
+//menu background
+const menuGradient = document.querySelector(".main__gradient");
+function menuGradientCalc(){
+    if (menuGradient) {
+        menuGradient.style.opacity = `${(1920 - window.innerWidth) / 1920}`;
+    }
+}
+menuGradientCalc();
+window.addEventListener('resize', () => {
+    menuGradientCalc();
+});

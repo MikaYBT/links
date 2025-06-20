@@ -30,6 +30,8 @@ html, body {
     justify-content: space-between;
 }
 
+
+
 :root {
     --white: #efefef;
     --black: #010203;
@@ -40,6 +42,17 @@ html, body {
     --gradent5: #fdfff3;
 }
 
+.main__gradient{
+    background: var(--black);
+    background: linear-gradient(90deg, var(--black) 0%, rgba(0, 0, 0, 0) 100%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 7;
+    opacity: 0;
+}
 
 .sign {
     max-width: 120px;
